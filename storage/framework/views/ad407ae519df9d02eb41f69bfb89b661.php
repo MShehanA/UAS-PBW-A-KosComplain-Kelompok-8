@@ -1,0 +1,13 @@
+<?php $__env->startSection('title','Buat Keluhan'); ?> <?php $__env->startSection('page-title','Buat Keluhan'); ?>
+<?php $__env->startSection('content'); ?>
+<div class="section-card form-card"><div class="section-heading"><div><h5>Formulir Pengaduan</h5><p>Ceritakan kendala yang kamu alami di lingkungan kos.</p></div></div>
+<form method="POST" action="<?php echo e(route('resident.complaints.store')); ?>" enctype="multipart/form-data"><?php echo csrf_field(); ?>
+<div class="row g-3"><div class="col-md-8"><label class="form-label">Judul keluhan *</label><input class="form-control" name="title" value="<?php echo e(old('title')); ?>" placeholder="Contoh: Air kamar mandi tidak mengalir" required></div>
+<div class="col-md-4"><label class="form-label">Nomor kamar *</label><input class="form-control" name="room_number" value="<?php echo e(old('room_number')); ?>" placeholder="Contoh: A-03" required></div>
+<div class="col-md-6"><label class="form-label">Kategori *</label><select class="form-select" name="category" required><option value="">Pilih kategori</option><?php $__currentLoopData = ['Fasilitas Kamar','Air dan Sanitasi','Listrik','Internet/Wi-Fi','Kebersihan','Keamanan','Lainnya']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cat): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><option <?php if(old('category')===$cat): echo 'selected'; endif; ?>><?php echo e($cat); ?></option><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?></select></div>
+<div class="col-md-6"><label class="form-label">Foto bukti (opsional)</label><input class="form-control" type="file" name="image" accept="image/png,image/jpeg,image/webp"><small class="muted">JPG, PNG, WEBP · Maksimal 2 MB</small></div>
+<div class="col-12"><label class="form-label">Deskripsi masalah *</label><textarea class="form-control" rows="5" name="description" placeholder="Jelaskan masalah, kapan terjadi, dan informasi lain yang diperlukan..." required><?php echo e(old('description')); ?></textarea></div></div>
+<div class="d-flex gap-2 justify-content-end mt-4"><a href="<?php echo e(route('resident.dashboard')); ?>" class="btn btn-light">Batal</a><button class="btn btn-primary"><i class="bi bi-send me-1"></i> Kirim Keluhan</button></div></form></div>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\xampp\htdocs\KosComplain_FIXED\KosComplain\resources\views/resident/complaints/create.blade.php ENDPATH**/ ?>

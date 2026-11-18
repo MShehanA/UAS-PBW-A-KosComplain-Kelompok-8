@@ -1,0 +1,8 @@
+@extends('layouts.app')
+@section('title','Detail Keluhan') @section('page-title','Detail Keluhan')
+@section('content')
+<div class="d-flex justify-content-between align-items-center mb-3"><a href="{{ route('resident.complaints.index') }}" class="muted text-decoration-none"><i class="bi bi-arrow-left"></i> Kembali ke riwayat</a>@include('partials.status',['status'=>$complaint->status])</div>
+<div class="row g-3"><div class="col-lg-8"><div class="section-card"><div class="eyebrow">LAPORAN #KC-{{ str_pad($complaint->id,4,'0',STR_PAD_LEFT) }}</div><h4 class="mt-2">{{ $complaint->title }}</h4><p class="muted">{{ $complaint->created_at->format('d F Y, H:i') }}</p><div class="detail-grid"><div><small>Kategori</small><b>{{ $complaint->category }}</b></div><div><small>Nomor kamar</small><b>{{ $complaint->room_number }}</b></div></div><hr><h6>Deskripsi masalah</h6><p class="detail-text">{{ $complaint->description }}</p>@if($complaint->image)<img class="evidence-img" src="{{ asset('storage/'.$complaint->image) }}" alt="Foto bukti">@endif</div>
+<div class="section-card mt-3"><h5>Tanggapan Admin</h5>@forelse($complaint->responses as $r)<div class="response-item"><b>{{ $r->admin->name }}</b><small>{{ $r->created_at->format('d M Y, H:i') }}</small><p>{{ $r->response }}</p></div>@empty<p class="muted mb-0">Belum ada tanggapan dari admin.</p>@endforelse</div></div>
+<div class="col-lg-4"><div class="section-card"><h6>Riwayat Status</h6><div class="timeline">@foreach($complaint->statusHistories as $h)<div class="timeline-item"><b>{{ $h->new_status }}</b><small>{{ $h->created_at->format('d M Y, H:i') }}</small>@if($h->note)<p>{{ $h->note }}</p>@endif</div>@endforeach</div></div></div></div>
+@endsection

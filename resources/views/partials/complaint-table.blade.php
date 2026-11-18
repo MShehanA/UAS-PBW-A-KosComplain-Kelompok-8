@@ -1,0 +1,4 @@
+<div class="table-responsive"><table class="table align-middle"><thead><tr><th>Pengaduan</th>@if(auth()->user()->role==='admin')<th>Penghuni</th>@endif<th>Kategori</th><th>Tanggal</th><th>Status</th><th></th></tr></thead><tbody>
+@forelse($complaints as $c)<tr><td><b>{{ $c->title }}</b><small class="d-block muted">#KC-{{ str_pad($c->id,4,'0',STR_PAD_LEFT) }}</small></td>@if(auth()->user()->role==='admin')<td>{{ $c->user->name }}</td>@endif<td>{{ $c->category }}</td><td>{{ $c->created_at->format('d M Y') }}</td><td>@include('partials.status',['status'=>$c->status])</td><td><a class="btn btn-sm btn-light" href="{{ route(auth()->user()->role==='admin'?'admin.complaints.show':'resident.complaints.show',$c) }}">Detail <i class="bi bi-arrow-up-right"></i></a></td></tr>
+@empty<tr><td colspan="7" class="text-center py-5 muted">Belum ada data keluhan.</td></tr>@endforelse
+</tbody></table></div>
