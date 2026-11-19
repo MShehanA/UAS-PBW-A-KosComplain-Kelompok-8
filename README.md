@@ -1,5 +1,22 @@
 # KosComplain — Laravel 12
 
+## Pemrograman Berbasis Web
+
+**Anggota Kelompok**
+| No. | Nama | NIM |
+|---|---|---|
+| 1. | Muhammad shehan algi | 4524210069 |
+| 2. | Ririn Verdawati | 4524210090 |
+| 3. | Rizka Ainun Nazori | 4524210092 |
+| 4. | Sarah Syafitri Hilmi | 4524210096 |
+| 5. | Maria Natalia Alyssa Beli | 4524210133 |
+
+**Dosen Pengampu**: Bambang Riono Arsad, S.Kom., MMSI
+
+**Program Studi Teknik Informatika**  
+**Fakultas Teknik Universitas Pancasila**  
+**2026/2027**
+
 Aplikasi pengaduan penghuni kos dengan dua role: `penghuni` dan `admin`.
 
 ## Fitur
