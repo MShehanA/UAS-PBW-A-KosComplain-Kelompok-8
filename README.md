@@ -17,6 +17,8 @@
 **Fakultas Teknik Universitas Pancasila**  
 **2026/2027**
 
+---
+
 Aplikasi pengaduan penghuni kos dengan dua role: `penghuni` dan `admin`.
 
 ## Fitur
